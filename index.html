@@ -2090,15 +2090,15 @@
         }
       }
       .animate {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.5s ease;
-}
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.5s ease;
+      }
 
-.animate.shoow {
-  opacity: 1;
-  transform: translateY(0);
-}
+      .animate.shoow {
+        opacity: 1;
+        transform: translateY(0);
+      }
     </style>
   </head>
 
@@ -2224,7 +2224,7 @@
             class="textt scroll-animate fade-up"
             style="animation-delay: 0.2s"
           >
-            2+
+            1+
             <div class="exx">Years Experience</div>
           </div>
           <div
@@ -2482,55 +2482,54 @@
     <h2 id="experience-heading" class="animated-heading">
       PROFESSIONAL EXPERIENCE
     </h2>
-
     <div class="time-line" id="experience">
-      <div class="container left-container">
-        <i class="fas fa-code"></i>
-        <div class="text-box">
-          <h2>Senior Frontend Developer</h2>
-          <small>2026 - Present</small>
-          <p>
-            Leading frontend development for enterprise applications, mentoring
-            junior developers, and implementing modern development practices.
-          </p>
-          <span class="left-container-arrow"></span>
-        </div>
-      </div>
-      <div class="container right-container">
-        <i class="fas fa-mobile-alt"></i>
-        <div class="text-box">
-          <h2>
-            Responsive Designer & <br />
-            UI/UX Specialist
-          </h2>
-          <small>2025 - 2026</small>
-          <p>
-            Designing and developing fully responsive websites, ensuring
-            seamless performance across all devices.
-          </p>
-          <span class="right-container-arrow"></span>
-        </div>
-      </div>
       <div class="container left-container">
         <i class="fas fa-laptop-code"></i>
         <div class="text-box">
           <h2>Frontend Developer</h2>
-          <small>2024- 2025</small>
+          <small>2025</small>
           <p>
-            Developed responsive web applications, collaborated with design
-            teams, and optimized performance for client projects.
+            Developed responsive websites using HTML, CSS, and JavaScript while
+            building a strong foundation in frontend development.
           </p>
           <span class="left-container-arrow"></span>
         </div>
       </div>
+
       <div class="container right-container">
-        <i class="fas fa-graduation-cap"></i>
+        <i class="fas fa-code"></i>
         <div class="text-box">
-          <h2>Junior Developer</h2>
-          <small>2024 - 2025</small>
+          <h2>React.js Developer</h2>
+          <small>2025</small>
           <p>
-            Built foundational skills in web development, worked on various
-            projects, and contributed to team success.
+            Built dynamic and component-based user interfaces using React.js and
+            modern development practices.
+          </p>
+          <span class="right-container-arrow"></span>
+        </div>
+      </div>
+
+      <div class="container left-container">
+        <i class="fas fa-mobile-alt"></i>
+        <div class="text-box">
+          <h2>Senior Frontend Developer</h2>
+          <small>2025 - Present</small>
+          <p>
+            Focused on creating scalable, responsive, and high-performance web
+            applications with clean and maintainable code.
+          </p>
+          <span class="left-container-arrow"></span>
+        </div>
+      </div>
+
+      <div class="container right-container">
+        <i class="fas fa-globe"></i>
+        <div class="text-box">
+          <h2>Modern Web Developer</h2>
+          <small>Present</small>
+          <p>
+            Building modern web experiences using React.js, Tailwind CSS, and
+            contemporary frontend technologies.
           </p>
           <span class="right-container-arrow"></span>
         </div>
@@ -2824,8 +2823,8 @@
               setTimeout(() => {
                 card.classList.add("shoow");
               }, index * 100);
-            }else{
-              card.classList.remove("shoow")
+            } else {
+              card.classList.remove("shoow");
             }
           });
         });
