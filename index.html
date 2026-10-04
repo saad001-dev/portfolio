@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,11 +23,44 @@
         box-sizing: border-box;
       }
 
+      /* ========== CUSTOM SCROLLBAR STYLING ========== */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0a1020;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #14b8b8, #8b5cf6);
+        border-radius: 10px;
+        border: 2px solid #0a1020;
+        transition: all 0.3s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #1ed3d3, #9b6cf6);
+        box-shadow: 0 0 15px rgba(20, 184, 184, 0.3);
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: #0a1020;
+      }
+
+      /* Firefox Scrollbar */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #14b8b8 #0a1020;
+      }
       body {
         background: #0a1020;
         font-family: "Inter", sans-serif;
         color: #eef2ff;
         line-height: 1.5;
+        height: 100vh;
         overflow-x: hidden;
       }
 
@@ -364,7 +398,7 @@
         color: white;
       } /* LinkedIn */
       .left-hand {
-        padding-top: 0 !important;
+        padding-top: 0px !important;
         margin-top: 0 !important;
       }
       .right-hand {
@@ -698,6 +732,10 @@
         background: linear-gradient(95deg, #195fc2, #367ae6, #5492fb);
         box-shadow: 0 0 8px #2f78e5;
       }
+      .express-progress {
+        background: linear-gradient(95deg, #195fc2, #367ae6, #5492fb);
+        box-shadow: 0 0 8px #2f78e5;
+      }
 
       /* additional hover glow for progress containers */
       .progress-bar:hover {
@@ -773,55 +811,7 @@
         }
       }
       /* Projects Section */
-      /* Projects Section */
-      .project-card {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 30px;
-        padding: 40px 5%;
-      }
 
-      .project-card .box {
-        background: rgba(15, 23, 42, 0.95);
-
-        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        will-change: transform, opacity;
-        /* FIXED: Better animation properties */
-
-        transition:
-          opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-          transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform, opacity;
-      }
-
-      .project-card .box:hover {
-        transform: translateY(-10px) scale(1.02);
-        border-color: rgba(36, 212, 212, 0.5);
-        box-shadow: 2px 0px 25px 3px rgba(177, 167, 167, 0.3);
-        transition: all 0.3s ease;
-      }
-      .project-card .box img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-
-      .project-card .box:hover img {
-        transform: scale(1.05);
-      }
-
-      .project-title {
-        padding: 20px;
-      }
-      .project-title h3 {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-        color: white;
-      }
       .contact {
         font-size: 0.85rem;
         color: #94a3b8;
@@ -1220,6 +1210,7 @@
       .group {
         display: flex;
         gap: 15px;
+
         animation: scrollTags 20s linear infinite;
       }
 
@@ -2099,6 +2090,977 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* 👇 Hover pe bhi kuch nahi */
+
+      /* =========================================================
+   PROJECTS SECTION — PREMIUM FULL-WIDTH SHOWCASE
+========================================================= */
+
+      .project-card {
+        width: 100%;
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 40px 0 120px;
+
+        counter-reset: project;
+      }
+
+      /* =========================================================
+   INDIVIDUAL PROJECT
+========================================================= */
+
+      .project-card .box {
+        width: 100%;
+        min-height: 520px;
+
+        display: flex;
+        align-items: center;
+        gap: 70px;
+
+        margin-bottom: 110px;
+        padding: 0;
+
+        position: relative;
+        overflow: visible;
+
+        background: transparent;
+
+        counter-increment: project;
+
+        /* Reveal animation */
+        opacity: 0;
+        transform: translateY(50px);
+        animation: projectReveal 0.9s ease forwards;
+      }
+
+      /* =========================================================
+   STAGGER ANIMATION
+========================================================= */
+
+      .project-card .box:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .project-card .box:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .project-card .box:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .project-card .box:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .project-card .box:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .project-card .box:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .project-card .box:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+
+      .project-card .box:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+
+      @keyframes projectReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+      .project-card .box > img {
+        width: 58%;
+        height: 440px;
+
+        display: block;
+
+        object-fit: cover;
+
+        border-radius: 14px;
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        background: #111;
+
+        box-shadow:
+          0 25px 70px rgba(0, 0, 0, 0.45),
+          0 0 0 1px rgba(255, 255, 255, 0.02);
+
+        transition:
+          transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.6s ease,
+          filter 0.6s ease;
+      }
+
+      /* Image hover */
+
+      .project-card .box:hover > img {
+        transform: scale(1.025);
+
+        filter: brightness(1.05);
+
+        box-shadow:
+          0 35px 90px rgba(0, 0, 0, 0.6),
+          0 0 35px rgba(255, 255, 255, 0.04);
+      }
+
+      /* =========================================================
+   PROJECT CONTENT
+========================================================= */
+
+      .project-card .project-title {
+        flex: 1;
+
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* =========================================================
+   PROJECT NUMBER
+   01 / 02 / 03 / 04 ...
+========================================================= */
+
+      .project-card .box::before {
+        content: counter(project, decimal-leading-zero);
+
+        position: absolute;
+
+        left: -70px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: rgba(255, 255, 255, 0.45);
+
+        font-family: monospace;
+
+        font-size: 12px;
+
+        font-weight: 500;
+
+        letter-spacing: 3px;
+      }
+
+      /* =========================================================
+   PROJECT TITLE
+========================================================= */
+
+      .project-card .project-title h3 {
+        max-width: 500px;
+
+        margin: 0 0 20px;
+
+        color: #f5f5f5;
+
+        font-size: clamp(32px, 3.2vw, 52px);
+
+        line-height: 1.02;
+
+        font-weight: 600;
+
+        letter-spacing: -2px;
+      }
+
+      /* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+      .project-card .project-title .contact {
+        max-width: 500px;
+
+        margin: 0 0 25px;
+
+        color: rgba(255, 255, 255, 0.58);
+
+        font-size: 16px;
+
+        font-weight: 400;
+
+        line-height: 1.75;
+      }
+
+      /* =========================================================
+   TECHNOLOGY TAGS
+========================================================= */
+
+      .project-card .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+
+        margin-bottom: 25px;
+      }
+
+      .project-card .tags span {
+        min-height: 28px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 6px 13px;
+
+        border-radius: 999px;
+
+        border: 1px solid rgba(255, 255, 255, 0.14);
+
+        background: rgba(255, 255, 255, 0.015);
+
+        color: rgba(255, 255, 255, 0.62);
+
+        font-family: monospace;
+
+        font-size: 10px;
+
+        font-weight: 500;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1.4px;
+
+        white-space: nowrap;
+
+        transition:
+          color 0.3s ease,
+          background 0.3s ease,
+          border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .project-card .tags span:hover {
+        color: #fff;
+
+        background: rgba(255, 255, 255, 0.06);
+
+        border-color: rgba(255, 255, 255, 0.35);
+
+        transform: translateY(-2px);
+      }
+
+      /* =========================================================
+   VIEW PROJECT BUTTON
+   PREMIUM BOX STYLE
+========================================================= */
+
+      .project-card .button {
+        width: fit-content;
+
+        min-height: 44px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 11px;
+
+        padding: 11px 18px;
+
+        border: 1px solid rgba(255, 255, 255, 0.18);
+
+        border-radius: 8px;
+
+        background: rgba(255, 255, 255, 0.025);
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: monospace;
+
+        font-size: 11px;
+
+        font-weight: 500;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1.8px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        transition:
+          background 0.3s ease,
+          border-color 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      /* Button hover */
+
+      .project-card .button:hover {
+        background: rgba(255, 255, 255, 0.08);
+
+        border-color: rgba(255, 255, 255, 0.4);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Button icon */
+
+      .project-card .button i {
+        font-size: 10px;
+
+        transition: transform 0.3s ease;
+      }
+
+      .project-card .button:hover i {
+        transform: translate(3px, -3px);
+      }
+
+      /* =========================================================
+   ALTERNATING PROJECT LAYOUT
+========================================================= */
+
+      /* 01 — Image Left / Content Right */
+
+      .project-card .box:nth-child(odd) {
+        flex-direction: row;
+      }
+
+      /* 02 — Content Left / Image Right */
+
+      .project-card .box:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      /* =========================================================
+   PROJECT DIVIDER
+========================================================= */
+
+      .project-card .box:not(:last-child)::after {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+
+        bottom: -55px;
+
+        height: 1px;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
+      }
+
+      /* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+      @media (min-width: 1400px) {
+        .project-card {
+          max-width: 1350px;
+        }
+
+        .project-card .box {
+          min-height: 580px;
+
+          gap: 90px;
+
+          margin-bottom: 130px;
+        }
+
+        .project-card .box > img {
+          width: 60%;
+          height: 480px;
+        }
+
+        .project-card .project-title h3 {
+          font-size: 54px;
+        }
+      }
+
+      /* =========================================================
+   LAPTOP
+========================================================= */
+
+      @media (max-width: 1100px) {
+        .project-card {
+          width: 92%;
+          max-width: 1200px;
+        }
+
+        .project-card .box {
+          gap: 45px;
+
+          min-height: 450px;
+
+          margin-bottom: 90px;
+        }
+
+        .project-card .box > img {
+          width: 55%;
+          height: 390px;
+        }
+
+        .project-card .project-title h3 {
+          font-size: 38px;
+        }
+
+        .project-card .project-title .contact {
+          font-size: 15px;
+
+          line-height: 1.65;
+        }
+
+        .project-card .box::before {
+          left: -35px;
+        }
+      }
+
+      /* =========================================================
+   TABLET
+========================================================= */
+
+      @media (max-width: 800px) {
+        .project-card {
+          width: 90%;
+          max-width: 650px;
+
+          padding-top: 20px;
+        }
+
+        .project-card .box,
+        .project-card .box:nth-child(odd),
+        .project-card .box:nth-child(even) {
+          flex-direction: column;
+
+          align-items: stretch;
+
+          gap: 30px;
+
+          min-height: auto;
+
+          margin-bottom: 80px;
+        }
+
+        /* Image */
+
+        .project-card .box > img {
+          width: 100%;
+          height: 380px;
+
+          border-radius: 13px;
+        }
+
+        /* Content */
+
+        .project-card .project-title {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+
+          align-items: flex-start;
+        }
+
+        /* Heading */
+
+        .project-card .project-title h3 {
+          max-width: 100%;
+
+          margin-bottom: 15px;
+
+          font-size: 38px;
+
+          letter-spacing: -1.5px;
+        }
+
+        /* Description */
+
+        .project-card .project-title .contact {
+          max-width: 100%;
+
+          margin-bottom: 18px;
+
+          font-size: 15px;
+
+          line-height: 1.7;
+        }
+
+        /* Number */
+
+        .project-card .box::before {
+          left: 0;
+          top: -25px;
+
+          transform: none;
+
+          font-size: 10px;
+        }
+
+        /* Tags */
+
+        .project-card .tags {
+          margin-bottom: 20px;
+        }
+
+        /* Button */
+
+        .project-card .button {
+          align-self: flex-start;
+
+          padding: 11px 17px;
+
+          min-height: 42px;
+        }
+
+        /* Divider */
+
+        .project-card .box:not(:last-child)::after {
+          bottom: -40px;
+        }
+      }
+
+      /* =========================================================
+   MOBILE
+========================================================= */
+
+      @media (max-width: 550px) {
+        .project-card {
+          width: calc(100% - 32px);
+
+          padding: 20px 0 50px;
+        }
+
+        /* Project */
+
+        .project-card .box,
+        .project-card .box:nth-child(odd),
+        .project-card .box:nth-child(even) {
+          flex-direction: column;
+
+          align-items: stretch;
+
+          gap: 20px;
+
+          min-height: auto;
+
+          margin-bottom: 65px;
+        }
+
+        /* Image */
+
+        .project-card .box > img {
+          width: 100%;
+
+          height: 235px;
+
+          object-fit: cover;
+
+          border-radius: 11px;
+        }
+
+        /* Content */
+
+        .project-card .project-title {
+          width: 100%;
+
+          display: flex;
+
+          flex-direction: column;
+
+          align-items: flex-start;
+        }
+
+        /* Heading */
+
+        .project-card .project-title h3 {
+          max-width: 100%;
+
+          margin: 0 0 12px;
+
+          font-size: 30px;
+
+          line-height: 1.08;
+
+          letter-spacing: -1px;
+        }
+
+        /* Description */
+
+        .project-card .project-title .contact {
+          max-width: 100%;
+
+          margin: 0 0 15px;
+
+          font-size: 14px;
+
+          line-height: 1.6;
+        }
+
+        /* Tags */
+
+        .project-card .tags {
+          width: 100%;
+
+          display: flex;
+
+          flex-wrap: wrap;
+
+          gap: 7px;
+
+          margin: 0 0 17px;
+        }
+
+        .project-card .tags span {
+          min-height: 26px;
+
+          padding: 5px 10px;
+
+          font-size: 9px;
+
+          letter-spacing: 1px;
+        }
+
+        /* =====================================================
+     MOBILE VIEW PROJECT BUTTON
+  ===================================================== */
+
+        .project-card .button {
+          align-self: flex-start;
+
+          width: fit-content;
+
+          min-height: 42px;
+
+          margin: 0;
+
+          padding: 10px 16px;
+
+          gap: 9px;
+
+          border-radius: 8px;
+
+          font-size: 10px;
+
+          letter-spacing: 1.5px;
+
+          white-space: nowrap;
+        }
+
+        .project-card .button i {
+          font-size: 9px;
+        }
+
+        /* Number */
+
+        .project-card .box::before {
+          left: 0;
+
+          top: -22px;
+
+          transform: none;
+
+          font-size: 9px;
+
+          letter-spacing: 2px;
+        }
+
+        /* Divider */
+
+        .project-card .box:not(:last-child)::after {
+          bottom: -32px;
+        }
+      }
+
+      /* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+      @media (max-width: 380px) {
+        .project-card {
+          width: calc(100% - 24px);
+
+          padding-top: 15px;
+        }
+
+        .project-card .box {
+          gap: 18px;
+
+          margin-bottom: 60px;
+        }
+
+        .project-card .box > img {
+          height: 210px;
+        }
+
+        .project-card .project-title h3 {
+          font-size: 26px;
+
+          line-height: 1.08;
+        }
+
+        .project-card .project-title .contact {
+          font-size: 13px;
+
+          line-height: 1.6;
+        }
+
+        .project-card .tags {
+          gap: 6px;
+
+          margin-bottom: 15px;
+        }
+
+        .project-card .tags span {
+          padding: 5px 9px;
+
+          font-size: 8px;
+        }
+
+        .project-card .button {
+          min-height: 40px;
+
+          padding: 9px 14px;
+
+          font-size: 9px;
+
+          letter-spacing: 1.3px;
+        }
+
+        .project-card .box::before {
+          top: -21px;
+
+          font-size: 8px;
+        }
+      }
+      /* =========================================================
+   FINAL MOBILE BUTTON POSITION FIX
+========================================================= */
+
+      @media (max-width: 550px) {
+        .project-card .project-title {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          justify-content: flex-start !important;
+          gap: 0 !important;
+        }
+
+        /* Description */
+        .project-card .project-title .contact {
+          margin-top: 0 !important;
+          margin-bottom: 12px !important;
+        }
+
+        /* Technology tags */
+        .project-card .tags {
+          display: flex !important;
+          flex-wrap: wrap !important;
+
+          margin-top: 0 !important;
+          margin-bottom: 12px !important;
+
+          gap: 7px !important;
+        }
+
+        /* FINAL BUTTON */
+        .project-card .project-title .button {
+          position: static !important;
+
+          display: inline-flex !important;
+
+          width: fit-content !important;
+          height: auto !important;
+          min-height: 40px !important;
+
+          margin: 0 !important;
+          padding: 10px 16px !important;
+
+          align-self: flex-start !important;
+
+          transform: none !important;
+
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          border-radius: 8px !important;
+
+          background: rgba(255, 255, 255, 0.025) !important;
+
+          color: #fff !important;
+
+          font-family: monospace !important;
+          font-size: 10px !important;
+          letter-spacing: 1.5px !important;
+
+          white-space: nowrap !important;
+
+          box-shadow: none !important;
+        }
+
+        /* Button hover */
+        .project-card .project-title .button:hover {
+          transform: translateY(-2px) !important;
+
+          background: rgba(255, 255, 255, 0.08) !important;
+
+          border-color: rgba(255, 255, 255, 0.4) !important;
+
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        .project-card .project-title .button i {
+          font-size: 9px !important;
+          margin: 0 !important;
+        }
+
+        /* Project spacing */
+        .project-card .box {
+          gap: 20px !important;
+          margin-bottom: 65px !important;
+        }
+      }
+
+      /* =========================================================
+   FINAL MOBILE PROJECT BUTTON POSITION
+========================================================= */
+
+      @media screen and (max-width: 550px) {
+        /* Project content ko completely control karo */
+        .project-card .box .project-title {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          justify-content: flex-start !important;
+
+          gap: 0 !important;
+
+          height: auto !important;
+          min-height: 0 !important;
+        }
+
+        /* Description */
+        .project-card .box .project-title .contact {
+          margin-top: 0 !important;
+          margin-bottom: 12px !important;
+        }
+
+        /* Tags */
+        .project-card .box .project-title .tags {
+          display: flex !important;
+          flex-wrap: wrap !important;
+
+          width: 100% !important;
+
+          margin-top: 0 !important;
+          margin-bottom: 10px !important;
+
+          gap: 7px !important;
+        }
+
+        /* =====================================================
+     BUTTON
+  ===================================================== */
+
+        .project-card .box .project-title a.button {
+          position: relative !important;
+
+          display: inline-flex !important;
+
+          align-items: center !important;
+          justify-content: center !important;
+
+          align-self: flex-start !important;
+
+          width: auto !important;
+          height: 42px !important;
+          min-height: 42px !important;
+
+          margin: 0 !important;
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+
+          padding: 0 17px !important;
+
+          box-sizing: border-box !important;
+
+          border: 1px solid rgba(255, 255, 255, 0.22) !important;
+
+          border-radius: 8px !important;
+
+          background: rgba(255, 255, 255, 0.025) !important;
+
+          color: #ffffff !important;
+
+          font-family: monospace !important;
+          font-size: 10px !important;
+          font-weight: 500 !important;
+
+          letter-spacing: 1.5px !important;
+          text-transform: uppercase !important;
+
+          line-height: 1 !important;
+
+          text-decoration: none !important;
+
+          transform: none !important;
+
+          box-shadow: none !important;
+
+          transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease !important;
+        }
+
+        /* Icon */
+        .project-card .box .project-title a.button i {
+          display: inline-block !important;
+
+          margin: 0 !important;
+
+          padding: 0 !important;
+
+          font-size: 9px !important;
+
+          line-height: 1 !important;
+        }
+
+        /* Hover */
+        .project-card .box .project-title a.button:hover {
+          background: rgba(255, 255, 255, 0.08) !important;
+
+          border-color: rgba(255, 255, 255, 0.42) !important;
+
+          transform: translateY(-2px) !important;
+
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        /* =====================================================
+     PROJECT SPACING
+  ===================================================== */
+
+        .project-card .box {
+          gap: 20px !important;
+
+          margin-bottom: 65px !important;
+        }
+      }
     </style>
   </head>
 
@@ -2170,7 +3132,7 @@
               <i class="fab fa-instagram"></i>
             </a>
             <a
-              href="https://github.com/saad001-dev/rj"
+              href="https://github.com/saad001-dev/Hotel-Room-Booking-.git"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -2188,7 +3150,7 @@
           </div>
         </div>
         <div class="right-hand">
-          <div class="img-my">
+          <div class="img-my" id="imageContainer">
             <img src="mu.png" alt="RJ Saad Profile" />
           </div>
         </div>
@@ -2200,17 +3162,19 @@
     <div class="section-about" id="about">
       <div class="left-side scroll-animate fade-left">
         <p>
-          With over 2 years of experience in frontend development, I specialize
-          in creating responsive, accessible, and high-performance web
-          applications. My expertise spans modern JavaScript frameworks, CSS
-          architecture, and user experience design.
+          With over 1.5 years of experience in web development, I specialize in
+          building responsive, accessible, and high-performance web applications
+          using React, JavaScript, HTML, Tailwind CSS, and Node.js. I also work
+          with Express.js and MongoDB to create complete full-stack (MERN)
+          solutions — from clean, scalable user interfaces to secure REST APIs
+          and well-structured databases.
         </p>
         <br />
         <p>
-          I believe in writing clean, maintainable code and staying updated with
-          the latest industry trends and best practices. My goal is to create
-          digital experiences that not only look beautiful but also provide
-          exceptional functionality.
+          I believe in writing clean and maintainable code while continuously
+          learning modern web technologies and best practices. My goal is to
+          design and develop applications that are not only visually appealing
+          but also fast, functional, secure, and user-focused — end to end.
         </p>
         <div class="live">
           <div
@@ -2231,14 +3195,14 @@
             class="textt scroll-animate fade-up"
             style="animation-delay: 0.3s"
           >
-            5+
+            7+
             <div class="exx">Tech Stack</div>
           </div>
           <div
             class="textt scroll-animate fade-up"
             style="animation-delay: 0.4s"
           >
-            7+
+            8+
             <div class="exx">Live Websites</div>
           </div>
         </div>
@@ -2247,7 +3211,7 @@
         <div class="box scroll-animate scale-in" style="animation-delay: 0.1s">
           <i class="fas fa-code"></i>
           <h4>Frontend Development</h4>
-          <p>React, Vue, JavaScript ES6+</p>
+          <p>React, TailwindCSS , JavaScript</p>
         </div>
         <div class="box scroll-animate scale-in" style="animation-delay: 0.2s">
           <i class="fas fa-laptop-code"></i>
@@ -2256,8 +3220,8 @@
         </div>
         <div class="box scroll-animate scale-in" style="animation-delay: 0.3s">
           <i class="fas fa-pen-nib"></i>
-          <h4>UI/UX Design</h4>
-          <p>Figma, Adobe XD, Prototyping</p>
+          <h4>UI Development</h4>
+          <p>Tailwind ,React.js ,JavaScript(ES6+)</p>
         </div>
         <div class="box scroll-animate scale-in" style="animation-delay: 0.4s">
           <i class="fas fa-rocket"></i>
@@ -2274,16 +3238,14 @@
           ><span class="tagss">React</span> <span class="tagss">JavaScript</span
           ><span class="tagss">Bootstrap</span
           ><span class="tagss">Tailwind</span>
-          <span class="tagss">TypeScript</span
-          ><span class="tagss">Next.js</span>
+          <span class="tagss">Git&GitHub</span><span class="tagss">Framer</span>
         </div>
         <div class="group">
           <span class="tagss">HTML5</span><span class="tagss">CSS3</span
           ><span class="tagss">React</span> <span class="tagss">JavaScript</span
           ><span class="tagss">Bootstrap</span
           ><span class="tagss">Tailwind</span>
-          <span class="tagss">TypeScript</span
-          ><span class="tagss">Next.js</span>
+          <span class="tagss">Git&GitHub</span><span class="tagss">Framer</span>
         </div>
       </div>
 
@@ -2297,6 +3259,112 @@
 
       <div class="project-card">
         <div class="box animate">
+          <img src="ai.png" alt="ai-img" />
+          <div class="project-title">
+            <h3>AI Assistant</h3>
+            <p class="contact">
+              AI-powered chatbot with real-time responses, image generation, and
+              conversational interface.
+            </p>
+            <div class="tags">
+              <span>React.js</span><span>TailwindCSS</span
+              ><span>JavaScript</span>
+            </div>
+            <a
+              href="https://gemini-clone-hazel-kappa.vercel.app"
+              class="button"
+              target="_blank"
+              ><i class="fas fa-rocket"></i> View Project</a
+            >
+          </div>
+        </div>
+        <div class="box animate">
+          <img src="hotel.jpg" alt="Hotel Booking" />
+          <div class="project-title">
+            <h3>Hotel Room Booking System</h3>
+            <p class="contact">
+              Room reservation platform with real-time availability and
+              payments.
+            </p>
+            <div class="tags">
+              <span>TailwindCSS</span><span>JavaScript</span
+              ><span>React.js</span>
+            </div>
+            <a
+              href="https://room-booking-kappa-eight.vercel.app"
+              class="button"
+              target="_blank"
+              ><i class="fas fa-rocket"></i> View Project</a
+            >
+          </div>
+        </div>
+        <div class="box animate">
+          <img src="event.jpg" alt="EventConnect Platform" />
+          <div class="project-title">
+            <h3>EventConnect Platform</h3>
+            <p class="contact">
+              A next-generation event networking platform that transforms how
+              professionals connect, collaborate, and grow.
+            </p>
+            <div class="tags">
+              <span>React</span><span>Tailwind</span><span>Node.js</span>
+            </div>
+            <a
+              href="https://eventconnect-zeta.vercel.app"
+              class="button"
+              target="_blank"
+              ><i class="fas fa-rocket"></i> View Project</a
+            >
+          </div>
+        </div>
+
+        <div class="box animate">
+          <img src="kc.png" alt="clothes" />
+          <div class="project-title">
+            <h3>Karachi Clothes Brand</h3>
+            <p class="contact">
+              A responsive full-stack e-commerce web application for browsing
+              and purchasing trendy fashion products, featuring a clean, modern,
+              and user-friendly interface.
+            </p>
+            <div class="tags">
+              <span>React</span><span>Node.js</span><span>Tailwind</span>
+            </div>
+            <a
+              href="https://karachi-clothes.vercel.app/"
+              class="button"
+              target="_blank"
+              ><i class="fas fa-rocket"></i> View Project</a
+            >
+          </div>
+        </div>
+        <div class="box animate">
+          <img src="health.png" alt="Health Care Platform" />
+
+          <div class="project-title">
+            <h3>Meridian Health Clinic</h3>
+
+            <p class="contact">
+              Modern responsive healthcare website built with React, Tailwind
+              CSS, animations, and a clean user-focused UI.
+            </p>
+
+            <div class="tags">
+              <span>React</span>
+              <span>Tailwind</span>
+              <span>Vite</span>
+            </div>
+
+            <a
+              href="https://health-hub-ruby.vercel.app/"
+              class="button"
+              target="_blank"
+            >
+              <i class="fas fa-rocket"></i> View Project
+            </a>
+          </div>
+        </div>
+        <div class="box animate">
           <img src="lms.jpg" alt="Weather App" />
           <div class="project-title">
             <h3>Learning Management System</h3>
@@ -2308,49 +3376,28 @@
               <span>React</span><span>Tailwind</span><span>JavaScript</span>
             </div>
             <a
-              href="https://lms-rouge-ten.vercel.app"
+              href="https://lms-rouge-ten.vercel.app/"
               class="button"
               target="_blank"
               ><i class="fas fa-rocket"></i> View Project</a
             >
           </div>
         </div>
-
-        <div class="box animate">
-          <img
-            src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt="Hotel Booking"
-          />
-          <div class="project-title">
-            <h3>Hotel Booking Platform</h3>
-            <p class="contact">
-              Room reservation platform with real-time availability and
-              payments.
-            </p>
-            <div class="tags">
-              <span>Vue.js</span><span>Express</span><span>PostgreSQL</span>
-            </div>
-            <a
-              href="https://room-booking-kappa-eight.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
-          </div>
-        </div>
-
         <div class="box animate">
           <img
             src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="Ai "
           />
           <div class="project-title">
-            <h3>AI Resume Builder</h3>
+            <h3>Resume Builder</h3>
             <p class="contact">
-              AI-powered resume builder with smart suggestions and live preview.
+              Web-based resume builder with real-time preview and customizable
+              resume templates
             </p>
             <div class="tags">
-              <span>React</span><span>Redux</span><span>Node.js</span>
+              <span>React</span>
+              <span>Tailwind</span>
+              <span>JavaScript</span>
             </div>
             <a
               href="https://ai-resume-builder-omega-azure.vercel.app"
@@ -2362,118 +3409,32 @@
         </div>
 
         <div class="box animate">
-          <img src="shoess.jpg" alt="E-Commerce Platform" />
-          <div class="project-title">
-            <h3>StepStyle Platform</h3>
-            <p class="contact">
-              A modern e-commerce web application for browsing and purchasing
-              shoes with smooth user experience
-            </p>
-            <div class="tags">
-              <span>React</span><span>Node.js</span><span>Tailwind</span>
-            </div>
-            <a
-              href="https://shoes-store-omega-five.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
-          </div>
-        </div>
+          <img
+            src="https://www.sculpteo.com/wp-content/uploads/2020/06/revit-min-1.jpg"
+            alt="Architecture Project"
+          />
 
-        <div class="box animate">
-          <img src="gemini.jpg" alt="gemini" />
           <div class="project-title">
-            <h3>Gemini Clone</h3>
+            <h3>Modern Architecture Web</h3>
+
             <p class="contact">
-              AI-powered chatbot with real-time responses, image generation, and
-              conversational interface.
+              Modern architectural designs with conceptual spaces and minimalist
+              planning for residential and commercial projects.
             </p>
+
             <div class="tags">
-              <span>React.js</span><span>Tailwind</span><span>Node.js</span>
+              <span>React</span>
+              <span>Tailwind</span>
+              <span>Framer-M</span>
             </div>
+
             <a
-              href="https://gemini-clone-hazel-kappa.vercel.app"
+              href="https://arche-olive.vercel.app/"
               class="button"
               target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
             >
-          </div>
-        </div>
-        <div class="box animate">
-          <img src="watchh.jpg" alt="img" />
-          <div class="project-title">
-            <h3>E-commerce Webstore</h3>
-            <p class="contact">
-              Modern e-commerce solution with real-time inventory and payment
-              integration
-            </p>
-            <div class="tags">
-              <span>React</span><span>Firebase</span><span>Tailwind</span>
-            </div>
-            <a
-              href="https://watch-store-rho-drab.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
-          </div>
-        </div>
-        <div class="box animate">
-          <img src="cloth.jpg" alt="clothes" />
-          <div class="project-title">
-            <h3>TrendWear Platfrom</h3>
-            <p class="contact">
-              A responsive online fashion store for browsing and purchasing
-              trendy outfits with a clean UI.
-            </p>
-            <div class="tags">
-              <span>React</span><span>Firebase</span><span>Tailwind</span>
-            </div>
-            <a
-              href="https://clothes-store-pearl-psi.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
-          </div>
-        </div>
-        <div class="box animate">
-          <img src="health.png" alt="Healthcare App" />
-          <div class="project-title">
-            <h3>Healthcare Platform</h3>
-            <p class="contact">
-              Patient management system with appointment scheduling and
-              telemedicine.
-            </p>
-            <div class="tags">
-              <span>React</span><span>Firebase</span><span>Tailwind</span>
-            </div>
-            <a
-              href="https://health-virid-two.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
-          </div>
-        </div>
-        <div class="box animate">
-          <img src="legend.jpg" alt="Healthcare App" />
-          <div class="project-title">
-            <h3>Fragrance Store</h3>
-            <p class="contact">
-              A modern fragrance e-commerce store for buying luxury perfumes
-              with a smooth, elegant experience
-            </p>
-            <div class="tags">
-              <span>React</span><span>Firebase</span><span>Tailwind</span>
-            </div>
-            <a
-              href="https://perfume-store-blond.vercel.app"
-              class="button"
-              target="_blank"
-              ><i class="fas fa-rocket"></i> View Project</a
-            >
+              <i class="fas fa-rocket"></i> View Project
+            </a>
           </div>
         </div>
       </div>
@@ -2495,43 +3456,58 @@
           <span class="left-container-arrow"></span>
         </div>
       </div>
-
       <div class="container right-container">
-        <i class="fas fa-code"></i>
+        <i class="fas fa-mobile-alt"></i>
         <div class="text-box">
-          <h2>React.js Developer</h2>
+          <h2>UI/UX Developer</h2>
           <small>2025</small>
           <p>
-            Built dynamic and component-based user interfaces using React.js and
-            modern development practices.
+            Focused on creating scalable, responsive, and high-performance web
+            applications with clean and maintainable code.
           </p>
           <span class="right-container-arrow"></span>
         </div>
       </div>
-
       <div class="container left-container">
-        <i class="fas fa-mobile-alt"></i>
+        <i class="fas fa-code"></i>
         <div class="text-box">
-          <h2>Senior Frontend Developer</h2>
-          <small>2025 - Present</small>
+          <h2>React.js Developer</h2>
+          <small>2025-Present</small>
           <p>
-            Focused on creating scalable, responsive, and high-performance web
-            applications with clean and maintainable code.
+            Built dynamic and component-based user interfaces using React.js and
+            modern development practices.
           </p>
           <span class="left-container-arrow"></span>
         </div>
       </div>
 
+      <!-- NAYA: Backend Developer -->
       <div class="container right-container">
-        <i class="fas fa-globe"></i>
+        <i class="fas fa-server"></i>
         <div class="text-box">
-          <h2>Modern Web Developer</h2>
-          <small>Present</small>
+          <h2>Backend Developer</h2>
+          <small>2025 - Present</small>
           <p>
-            Building modern web experiences using React.js, Tailwind CSS, and
-            contemporary frontend technologies.
+            Building RESTful APIs and server-side applications using Node.js,
+            Express.js, and MongoDB. Handling authentication, database design,
+            and API integration with frontend applications.
           </p>
           <span class="right-container-arrow"></span>
+        </div>
+      </div>
+
+      <!-- NAYA: Full Stack -->
+      <div class="container left-container">
+        <i class="fas fa-globe"></i>
+        <div class="text-box">
+          <h2>Full Stack Developer (MERN)</h2>
+          <small>Present</small>
+          <p>
+            Developing complete web applications using MongoDB, Express.js,
+            React.js, and Node.js (MERN Stack) with Tailwind CSS and modern
+            development tools.
+          </p>
+          <span class="left-container-arrow"></span>
         </div>
       </div>
     </div>
@@ -2571,6 +3547,15 @@
             <div class="progress-bar tailwind-progress" data-width="90"></div>
           </div>
         </div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <h3>Express JS</h3>
+            <span>80%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar express-progress" data-width="88"></div>
+          </div>
+        </div>
       </div>
 
       <!-- RIGHT COLUMN (second section) -->
@@ -2595,11 +3580,21 @@
             <div class="progress-bar react-progress" data-width="88"></div>
           </div>
         </div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <h3>Node JS</h3>
+            <span>80%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar node-progress" data-width="88"></div>
+          </div>
+        </div>
+
         <!-- NODE JS (newly added) -->
         <div class="skill-card">
           <div class="skill-header">
-            <h3>Node.js</h3>
-            <span>85%</span>
+            <h3>Git & GitHub</h3>
+            <span>90%</span>
           </div>
           <div class="progress">
             <div class="progress-bar node-progress" data-width="85"></div>
@@ -2644,7 +3639,7 @@
                 <i class="fab fa-instagram"></i>
               </a>
               <a
-                href="https://github.com/saad001-dev/rj"
+                href="https://github.com/saad001-dev/Hotel-Room-Booking-.git"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -2740,434 +3735,452 @@
         document.body.classList.add("loaded");
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const hero = document.querySelector(".hero");
+      const hero = document.querySelector(".hero");
 
-        setTimeout(() => {
-          hero.classList.add("show");
-        }, 300);
+      setTimeout(() => {
+        hero.classList.add("show");
+      }, 300);
 
-        // ========== TYPING ANIMATION FOR FRONTEND DEVELOPER ==========
-        const words = [
-          "Frontend Developer",
-          "Web Designer",
-          "React Expert",
-          "Creative Coder",
-        ];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingSpeed = 100;
-        const deletingSpeed = 50;
-        const pauseTime = 1500;
-        const typingElement = document.getElementById("typing-text");
+      // ========== TYPING ANIMATION FOR FRONTEND DEVELOPER ==========
+      const words = [
+        "Frontend Developer",
+        "Web Designer",
+        "React Expert",
+        "Creative Coder",
+      ];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingSpeed = 100;
+      const deletingSpeed = 50;
+      const pauseTime = 1500;
+      const typingElement = document.getElementById("typing-text");
 
-        function typeWriter() {
-          if (!typingElement) return;
-          const currentWord = words[wordIndex];
-          if (!isDeleting) {
-            typingElement.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === currentWord.length) {
-              isDeleting = true;
-              setTimeout(typeWriter, pauseTime);
-              return;
-            }
-          } else {
-            typingElement.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-            if (charIndex === 0) {
-              isDeleting = false;
-              wordIndex = (wordIndex + 1) % words.length;
-            }
+      function typeWriter() {
+        if (!typingElement) return;
+        const currentWord = words[wordIndex];
+        if (!isDeleting) {
+          typingElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(typeWriter, pauseTime);
+            return;
           }
-          setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
+        } else {
+          typingElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+          }
         }
+        setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
+      }
 
-        setTimeout(typeWriter, 500);
+      setTimeout(typeWriter, 500);
 
-        // ========== MOBILE MENU TOGGLE ==========
-        const navbarToggle = document.querySelector(".navbar-toggle");
-        const navLinks = document.querySelector(".nav-links");
+      // ========== MOBILE MENU TOGGLE ==========
+      const navbarToggle = document.querySelector(".navbar-toggle");
+      const navLinks = document.querySelector(".nav-links");
 
-        if (navbarToggle && navLinks) {
-          navbarToggle.addEventListener("click", (e) => {
-            e.stopPropagation();
-            navbarToggle.classList.toggle("show");
-            navLinks.classList.toggle("show");
+      if (navbarToggle && navLinks) {
+        navbarToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          navbarToggle.classList.toggle("show");
+          navLinks.classList.toggle("show");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("show");
+            navbarToggle.classList.remove("show");
           });
+        });
 
-          document.querySelectorAll(".nav-links a").forEach((link) => {
-            link.addEventListener("click", () => {
-              navLinks.classList.remove("show");
-              navbarToggle.classList.remove("show");
-            });
-          });
+        document.addEventListener("click", (e) => {
+          if (
+            !navbarToggle.contains(e.target) &&
+            !navLinks.contains(e.target)
+          ) {
+            navLinks.classList.remove("show");
+            navbarToggle.classList.remove("show");
+          }
+        });
+      }
 
-          document.addEventListener("click", (e) => {
-            if (
-              !navbarToggle.contains(e.target) &&
-              !navLinks.contains(e.target)
-            ) {
-              navLinks.classList.remove("show");
-              navbarToggle.classList.remove("show");
-            }
-          });
-        }
+      // ========== PROJECTS CARDS ANIMATION (Fixed) ==========
+      const cards = document.querySelectorAll(".animate");
 
-        const animated_Card = document.querySelectorAll(".animate");
-        window.addEventListener("scroll", () => {
-          animated_Card.forEach((card, index) => {
-            const rect = card.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
+      const cardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              // ✅ Card visible - Show karo
               setTimeout(() => {
-                card.classList.add("shoow");
+                entry.target.classList.add("shoow");
               }, index * 100);
             } else {
-              card.classList.remove("shoow");
+              // ❌ Card hidden - Hide karo (agar wapas animation chahiye)
+              entry.target.classList.remove("shoow");
             }
           });
-        });
+        },
+        {
+          threshold: 0.2, // 20% visible ho to trigger
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
 
-        // ========== SCROLL ANIMATION FOR ABOUT SECTION ==========
-        function initScrollAnimations() {
-          const animatedElements = document.querySelectorAll(".scroll-animate");
+      cards.forEach((card) => cardObserver.observe(card));
+      // ========== SCROLL ANIMATION FOR ABOUT SECTION ==========
+      function initScrollAnimations() {
+        const animatedElements = document.querySelectorAll(".scroll-animate");
 
-          const observerOptions = {
-            threshold: 0.2,
-            rootMargin: "0px 0px -50px 0px",
-          };
+        const observerOptions = {
+          threshold: 0.2,
+          rootMargin: "0px 0px -50px 0px",
+        };
 
-          const animationObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                // ✅ Screen mein aaya - visible class add
-                entry.target.classList.add("visible");
-
-                // Counter ka code (tumhara existing)
-                if (
-                  entry.target.classList.contains("textt") &&
-                  !entry.target.hasAttribute("data-counted")
-                ) {
-                  const numberElement = entry.target;
-                  const targetNumber = parseInt(numberElement.textContent);
-                  if (!isNaN(targetNumber)) {
-                    let currentNumber = 0;
-                    const increment = targetNumber / 50;
-                    const duration = 1000;
-                    const stepTime = duration / 50;
-
-                    const counter = setInterval(() => {
-                      currentNumber += increment;
-                      if (currentNumber >= targetNumber) {
-                        numberElement.childNodes[0].nodeValue =
-                          targetNumber + "+";
-                        clearInterval(counter);
-                      } else {
-                        numberElement.childNodes[0].nodeValue =
-                          Math.floor(currentNumber) + "+";
-                      }
-                    }, stepTime);
-                    numberElement.setAttribute("data-counted", "true");
-                  }
-                }
-
-                // ❌ REMOVE THIS LINE - Ye hatana hai
-                // animationObserver.unobserve(entry.target);
-              } else {
-                // ✅ NEW CODE: Screen se gaya - visible class remove
-                entry.target.classList.remove("visible");
-
-                // Counter reset karna hai? Agar haan to:
-                if (entry.target.classList.contains("textt")) {
-                  entry.target.removeAttribute("data-counted");
-                  // Original text wapas set karo
-                  const originalText =
-                    entry.target.getAttribute("data-original");
-                  if (originalText) {
-                    entry.target.childNodes[0].nodeValue = originalText;
-                  }
-                }
-              }
-            });
-          }, observerOptions);
-
-          animatedElements.forEach((el) => {
-            // Original text save karo counter ke liye
-            if (el.classList.contains("textt")) {
-              el.setAttribute("data-original", el.textContent);
-            }
-            animationObserver.observe(el);
-          });
-        }
-
-        // Alternative: Use ScrollTrigger style with requestAnimationFrame for smoother animation
-        function initSmoothScrollAnimation() {
-          const animatedElements = document.querySelectorAll(".scroll-animate");
-
-          function checkVisibility() {
-            animatedElements.forEach((el) => {
-              const rect = el.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
-
-              if (rect.top < windowHeight - 100 && rect.bottom > 0) {
-                el.classList.add("visible");
-              }
-            });
-          }
-
-          // Check on scroll with throttling
-          let ticking = false;
-          window.addEventListener("scroll", () => {
-            if (!ticking) {
-              requestAnimationFrame(() => {
-                checkVisibility();
-                ticking = false;
-              });
-              ticking = true;
-            }
-          });
-
-          // Check on load
-          window.addEventListener("load", checkVisibility);
-          checkVisibility();
-        }
-
-        // Initialize both animation methods for best results
-        initScrollAnimations();
-        initSmoothScrollAnimation();
-
-        // Add hover effect for boxes to enhance premium feel
-        const aboutBoxes = document.querySelectorAll(".right-side-box .box");
-        aboutBoxes.forEach((box, index) => {
-          box.addEventListener("mouseenter", () => {
-            box.style.transform = "translateY(-8px) scale(1.02)";
-          });
-          box.addEventListener("mouseleave", () => {
-            box.style.transform = "";
-          });
-        });
-        // ========== PROGRESS BAR ANIMATION ==========
-        (function () {
-          // Ensure all progress bars start at 0% and then animate to target width.
-          // Use Intersection Observer to trigger progress animation when visible.
-          // Makes animation smooth on scroll, also ensures consistency across desktop/mobile.
-
-          const progressBars = document.querySelectorAll(".progress-bar");
-
-          // reset width to 0% before any animation, to avoid layout flashes
-          progressBars.forEach((bar) => {
-            bar.style.width = "0%";
-          });
-
-          // check if element is in viewport (with threshold)
-          function isElementInViewport(el, offset = 80) {
-            const rect = el.getBoundingClientRect();
-            const windowHeight =
-              window.innerHeight || document.documentElement.clientHeight;
-            return rect.top <= windowHeight - offset && rect.bottom >= offset;
-          }
-
-          // store which bars have already animated
-          const animated = new Set();
-
-          function animateVisibleBars() {
-            progressBars.forEach((bar) => {
-              if (animated.has(bar)) return;
-              if (isElementInViewport(bar, 100)) {
-                const targetWidth = bar.getAttribute("data-width");
-                if (targetWidth) {
-                  // set width to target percentage
-                  bar.style.width = targetWidth + "%";
-                  animated.add(bar);
-                }
-              }
-            });
-          }
-
-          // run on load, scroll, resize
-          window.addEventListener("load", () => {
-            animateVisibleBars();
-            // fallback: if any bar still 0%, trigger after a tiny delay for smoothness
-            setTimeout(animateVisibleBars, 200);
-          });
-          window.addEventListener("scroll", animateVisibleBars);
-          window.addEventListener("resize", animateVisibleBars);
-
-          // also retrigger after any ajax or dynamic (just in case)
-          document.addEventListener("DOMContentLoaded", () => {
-            animateVisibleBars();
-          });
-
-          // optional: for more reliability, also observe via intersection observer
-          if ("IntersectionObserver" in window) {
-            const observer = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    const bar = entry.target;
-                    if (!animated.has(bar)) {
-                      const targetWidth = bar.getAttribute("data-width");
-                      if (
-                        targetWidth &&
-                        bar.style.width !== targetWidth + "%"
-                      ) {
-                        bar.style.width = targetWidth + "%";
-                        animated.add(bar);
-                      }
-                    }
-                    // after animating, we can unobserve to reduce overhead
-                    observer.unobserve(bar);
-                  }
-                });
-              },
-              { threshold: 0.3, rootMargin: "0px 0px -20px 0px" },
-            );
-
-            progressBars.forEach((bar) => {
-              observer.observe(bar);
-            });
-          } else {
-            // fallback: if no intersectionObserver, just animate after short delay and on scroll
-            window.addEventListener("load", () => {
-              setTimeout(() => {
-                progressBars.forEach((bar) => {
-                  if (!animated.has(bar)) {
-                    const target = bar.getAttribute("data-width");
-                    bar.style.width = target + "%";
-                    animated.add(bar);
-                  }
-                });
-              }, 300);
-            });
-          }
-        })();
-
-        // ========== TIMELINE ITEMS ANIMATION ==========
-        const timelineItems = document.querySelectorAll(".container");
-        const timelineObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                timelineObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3 },
-        );
-        timelineItems.forEach((item) => timelineObserver.observe(item));
-
-        // ========== HEADINGS SWEEP/SCROLL ANIMATION ==========
-        const headings = document.querySelectorAll(".animated-heading");
-        const headingObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                if (entry.target.getAttribute("data-split") !== "true") {
-                  const text = entry.target.textContent;
-                  entry.target.innerHTML = text
-                    .split("")
-                    .map((letter) => {
-                      if (letter === " ")
-                        return '<span style="opacity:1; transform:translateY(0); width:0.3em;">&nbsp;</span>';
-                      return `<span>${letter}</span>`;
-                    })
-                    .join("");
-                  entry.target.setAttribute("data-split", "true");
-                }
-                const spans = entry.target.querySelectorAll("span");
-                spans.forEach((span, index) => {
-                  if (span.textContent.trim() !== "") {
-                    span.style.transitionDelay = `${index * 0.03}s`;
-                  }
-                });
-                headingObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.4 },
-        );
-        headings.forEach((heading) => headingObserver.observe(heading));
-
-        // ========== FORM SUBMISSION ==========
-
-        window.addEventListener("load", () => {
-          const logo = document.querySelector(".logo");
-          logo.classList.add("show");
-        });
-
-        const form = document.getElementById("quickMessageForm");
-        if (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const name = document.getElementById("msgName")?.value.trim();
-            const email = document.getElementById("msgEmail")?.value.trim();
-            const message = document.getElementById("msgText")?.value.trim();
-
-            if (!name || !email || !message) {
-              alert("Please fill in all fields");
-              return;
-            }
-            if (!email.includes("@") || !email.includes(".")) {
-              alert("Please enter a valid email address");
-              return;
-            }
-            alert("✨ Message sent successfully! I will get back to you soon.");
-            form.reset();
-          });
-        }
-        const elements = document.querySelectorAll(".left-hand, .right-hand");
-
-        const observer = new IntersectionObserver((entries) => {
+        const animationObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("showw");
+              // ✅ Screen mein aaya - visible class add
+              entry.target.classList.add("visible");
+
+              // Counter ka code (tumhara existing)
+              if (
+                entry.target.classList.contains("textt") &&
+                !entry.target.hasAttribute("data-counted")
+              ) {
+                const numberElement = entry.target;
+                const targetNumber = parseInt(numberElement.textContent);
+                if (!isNaN(targetNumber)) {
+                  let currentNumber = 0;
+                  const increment = targetNumber / 50;
+                  const duration = 1000;
+                  const stepTime = duration / 50;
+
+                  const counter = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= targetNumber) {
+                      numberElement.childNodes[0].nodeValue =
+                        targetNumber + "+";
+                      clearInterval(counter);
+                    } else {
+                      numberElement.childNodes[0].nodeValue =
+                        Math.floor(currentNumber) + "+";
+                    }
+                  }, stepTime);
+                  numberElement.setAttribute("data-counted", "true");
+                }
+              }
+
+              // ❌ REMOVE THIS LINE - Ye hatana hai
+              // animationObserver.unobserve(entry.target);
             } else {
-              entry.target.classList.remove("showw"); // 🔥 repeat animation
+              // ✅ NEW CODE: Screen se gaya - visible class remove
+              entry.target.classList.remove("visible");
+
+              // Counter reset karna hai? Agar haan to:
+              if (entry.target.classList.contains("textt")) {
+                entry.target.removeAttribute("data-counted");
+                // Original text wapas set karo
+                const originalText = entry.target.getAttribute("data-original");
+                if (originalText) {
+                  entry.target.childNodes[0].nodeValue = originalText;
+                }
+              }
             }
           });
+        }, observerOptions);
+
+        animatedElements.forEach((el) => {
+          // Original text save karo counter ke liye
+          if (el.classList.contains("textt")) {
+            el.setAttribute("data-original", el.textContent);
+          }
+          animationObserver.observe(el);
         });
+      }
 
-        elements.forEach((el) => observer.observe(el));
-        const observerOptions = {
-          threshold: 0.1, // Jab 10% card nazar aaye tab chalay
-          rootMargin: "0px 0px -50px 0px", // Thoda pehle hi trigger kar de
-        };
-        // ========== ACTIVE NAV LINK ON SCROLL ==========
-        const sections = document.querySelectorAll(
-          "#home, #about, #project, #experience, #contact",
-        );
-        const navItems = document.querySelectorAll(".nav-links a");
+      // Alternative: Use ScrollTrigger style with requestAnimationFrame for smoother animation
+      function initSmoothScrollAnimation() {
+        const animatedElements = document.querySelectorAll(".scroll-animate");
 
-        function updateActiveNav() {
-          let current = "";
-          const scrollPosition = window.scrollY + 120;
+        function checkVisibility() {
+          animatedElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-          sections.forEach((section) => {
-            if (!section) return;
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            if (
-              scrollPosition >= sectionTop &&
-              scrollPosition < sectionBottom
-            ) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          navItems.forEach((item) => {
-            item.classList.remove("active");
-            if (item.getAttribute("href") === `#${current}`) {
-              item.classList.add("active");
+            if (rect.top < windowHeight - 100 && rect.bottom > 0) {
+              el.classList.add("visible");
             }
           });
         }
 
-        window.addEventListener("scroll", updateActiveNav);
-        window.addEventListener("load", updateActiveNav);
+        // Check on scroll with throttling
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              checkVisibility();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+
+        // Check on load
+        window.addEventListener("load", checkVisibility);
+        checkVisibility();
+      }
+
+      // Initialize both animation methods for best results
+      initScrollAnimations();
+      initSmoothScrollAnimation();
+
+      // Add hover effect for boxes to enhance premium feel
+      const aboutBoxes = document.querySelectorAll(".right-side-box .box");
+      aboutBoxes.forEach((box, index) => {
+        box.addEventListener("mouseenter", () => {
+          box.style.transform = "translateY(-8px) scale(1.02)";
+        });
+        box.addEventListener("mouseleave", () => {
+          box.style.transform = "";
+        });
       });
+      // ========== PROGRESS BAR ANIMATION ==========
+      (function () {
+        // Ensure all progress bars start at 0% and then animate to target width.
+        // Use Intersection Observer to trigger progress animation when visible.
+        // Makes animation smooth on scroll, also ensures consistency across desktop/mobile.
+
+        const progressBars = document.querySelectorAll(".progress-bar");
+
+        // reset width to 0% before any animation, to avoid layout flashes
+        progressBars.forEach((bar) => {
+          bar.style.width = "0%";
+        });
+
+        // check if element is in viewport (with threshold)
+        function isElementInViewport(el, offset = 80) {
+          const rect = el.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          return rect.top <= windowHeight - offset && rect.bottom >= offset;
+        }
+
+        // store which bars have already animated
+        const animated = new Set();
+
+        function animateVisibleBars() {
+          progressBars.forEach((bar) => {
+            if (animated.has(bar)) return;
+            if (isElementInViewport(bar, 100)) {
+              const targetWidth = bar.getAttribute("data-width");
+              if (targetWidth) {
+                // set width to target percentage
+                bar.style.width = targetWidth + "%";
+                animated.add(bar);
+              }
+            }
+          });
+        }
+
+        // run on load, scroll, resize
+        window.addEventListener("load", () => {
+          animateVisibleBars();
+          // fallback: if any bar still 0%, trigger after a tiny delay for smoothness
+          setTimeout(animateVisibleBars, 200);
+        });
+        window.addEventListener("scroll", animateVisibleBars);
+        window.addEventListener("resize", animateVisibleBars);
+
+        // also retrigger after any ajax or dynamic (just in case)
+        document.addEventListener("DOMContentLoaded", () => {
+          animateVisibleBars();
+        });
+
+        // optional: for more reliability, also observe via intersection observer
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const bar = entry.target;
+                  if (!animated.has(bar)) {
+                    const targetWidth = bar.getAttribute("data-width");
+                    if (targetWidth && bar.style.width !== targetWidth + "%") {
+                      bar.style.width = targetWidth + "%";
+                      animated.add(bar);
+                    }
+                  }
+                  // after animating, we can unobserve to reduce overhead
+                  observer.unobserve(bar);
+                }
+              });
+            },
+            { threshold: 0.3, rootMargin: "0px 0px -20px 0px" },
+          );
+
+          progressBars.forEach((bar) => {
+            observer.observe(bar);
+          });
+        } else {
+          // fallback: if no intersectionObserver, just animate after short delay and on scroll
+          window.addEventListener("load", () => {
+            setTimeout(() => {
+              progressBars.forEach((bar) => {
+                if (!animated.has(bar)) {
+                  const target = bar.getAttribute("data-width");
+                  bar.style.width = target + "%";
+                  animated.add(bar);
+                }
+              });
+            }, 300);
+          });
+        }
+      })();
+
+      // ========== TIMELINE ITEMS ANIMATION ==========
+      const timelineItems = document.querySelectorAll(".container");
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      timelineItems.forEach((item) => timelineObserver.observe(item));
+
+      // ========== HEADINGS SWEEP/SCROLL ANIMATION ==========
+      const headings = document.querySelectorAll(".animated-heading");
+      const headingObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              if (entry.target.getAttribute("data-split") !== "true") {
+                const text = entry.target.textContent;
+                entry.target.innerHTML = text
+                  .split("")
+                  .map((letter) => {
+                    if (letter === " ")
+                      return '<span style="opacity:1; transform:translateY(0); width:0.3em;">&nbsp;</span>';
+                    return `<span>${letter}</span>`;
+                  })
+                  .join("");
+                entry.target.setAttribute("data-split", "true");
+              }
+              const spans = entry.target.querySelectorAll("span");
+              spans.forEach((span, index) => {
+                if (span.textContent.trim() !== "") {
+                  span.style.transitionDelay = `${index * 0.03}s`;
+                }
+              });
+              headingObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+      headings.forEach((heading) => headingObserver.observe(heading));
+
+      // ========== FORM SUBMISSION ==========
+
+      window.addEventListener("load", () => {
+        const logo = document.querySelector(".logo");
+        logo.classList.add("show");
+      });
+
+      const form = document.getElementById("quickMessageForm");
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("msgName")?.value.trim();
+          const email = document.getElementById("msgEmail")?.value.trim();
+          const message = document.getElementById("msgText")?.value.trim();
+
+          if (!name || !email || !message) {
+            alert("Please fill in all fields");
+            return;
+          }
+          if (!email.includes("@") || !email.includes(".")) {
+            alert("Please enter a valid email address");
+            return;
+          }
+          alert("✨ Message sent successfully! I will get back to you soon.");
+          form.reset();
+        });
+      }
+      const elements = document.querySelectorAll(".left-hand, .right-hand");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("showw");
+          } else {
+            entry.target.classList.remove("showw"); // 🔥 repeat animation
+          }
+        });
+      });
+
+      elements.forEach((el) => observer.observe(el));
+      const observerOptions = {
+        threshold: 0.1, // Jab 10% card nazar aaye tab chalay
+        rootMargin: "0px 0px -50px 0px", // Thoda pehle hi trigger kar de
+      };
+     
+      // ========== ACTIVE NAV LINK ON SCROLL (IntersectionObserver) ==========
+      const sections = document.querySelectorAll(
+        "#home, #about, #project, #experience, #contact",
+      );
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      // Har section ko observe karo
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+
+              // Sab links se active hatao
+              navItems.forEach((link) => link.classList.remove("active"));
+
+              // Jis section pe hain uska link active karo
+              const activeLink = document.querySelector(
+                `.nav-links a[href="#${id}"]`,
+              );
+              if (activeLink) activeLink.classList.add("active");
+            }
+          });
+        },
+        {
+          // Screen ke top 40% mein jo section aaye wo active ho
+          rootMargin: "-40% 0px -55% 0px",
+          threshold: 0,
+        },
+      );
+
+      sections.forEach((section) => {
+        if (section) navObserver.observe(section);
+      });
+
+      // ========== CLICK PE TURANT ACTIVE (smooth scroll ke sath) ==========
+      navItems.forEach((link) => {
+        link.addEventListener("click", () => {
+          navItems.forEach((item) => item.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      window.addEventListener("scroll", updateActiveNav);
+      window.addEventListener("load", updateActiveNav);
     </script>
   </body>
 </html>
