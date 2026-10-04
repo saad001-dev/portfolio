@@ -27,3 +27,12 @@ Personal portfolio website showcasing web development projects, skills, and cont
 - **Fonts:** Custom (display + mono)
 
 ## 📁 Project Structure
+portfolio/
+├── index.html
+├── css/
+│ └── style.css
+├── js/
+│ └── script.js
+├── images/
+│ └── (project images)
+└── README.md
